@@ -23,8 +23,12 @@ public abstract class ServiceSport {
     private LocalTime heureOuverture;
     private LocalTime heureFermeture;
     @OneToMany(mappedBy = "serviceSport")
-    private Set<creneauhoraire> creneauhoraire;
+    private Set<CreneauHoraire> creneauhoraire;
+
+    @OneToMany(mappedBy = "serviceSport", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Cours> cours;
 }
+
 
 
 

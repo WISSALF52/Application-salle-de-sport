@@ -1,6 +1,6 @@
 package org.example.sport.services;
 
-import org.example.sport.entite.creneauhoraire;
+import org.example.sport.entite.CreneauHoraire;
 import org.example.sport.repositories.CreneauHoraireRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,15 +13,15 @@ public class CreneauHoraireService {
     @Autowired
     private CreneauHoraireRepository creneauHoraireRepository;
 
-    public List<creneauhoraire> getAllCreneaux() {
+    public List<CreneauHoraire> getAllCreneaux() {
         return creneauHoraireRepository.findAll();
     }
 
-    public Optional<creneauhoraire> getCreneauById(Long id) {
+    public Optional<CreneauHoraire> getCreneauById(Long id) {
         return creneauHoraireRepository.findById(id);
     }
 
-    public creneauhoraire addCreneau(creneauhoraire creneau) {
+    public CreneauHoraire addCreneau(CreneauHoraire creneau) {
         return creneauHoraireRepository.save(creneau);
     }
 
