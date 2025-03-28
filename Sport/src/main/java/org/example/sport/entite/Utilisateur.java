@@ -13,12 +13,12 @@ import java.util.Set;
 @AllArgsConstructor
 public class Utilisateur {
 
-
-
-    @Getter
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(nullable = false, unique = true, length = 50)
+    private String nomUtilisateur;  // ➜ Utilisé pour la connexion
 
     @Column(nullable = false, length = 50)
     private String nom;
@@ -41,6 +41,4 @@ public class Utilisateur {
     public enum Role {
         CLIENT, COACH, ADMIN
     }
-
-
 }
