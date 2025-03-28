@@ -43,4 +43,16 @@ public class UtilisateurService {
     public Iterable<Utilisateur> obtenirTousLesUtilisateurs() {
         return utilisateurRepository.findAll();
     }
+
+    @Override
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        Utilisateur utilisateur = utilisateurRepository.findByEmail(email)
+            .orElseThrow(() -> new UsernameNotFoundException("Utilisateur non trouvé avec l'email : " + email));
+
+        Collection<GrantedAuthority> authorities = utilisateur.getRoles().stream()
+            .map(role -> new SimpleGrantedAuthority("ROLE_" + role.name()))
+            .collect(Collectors.toList());
+
+        return new User(utilisateur.getEmail(), utilisateur.getMotDePasse(), authorities);
+    }
 }
