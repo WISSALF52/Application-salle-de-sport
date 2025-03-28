@@ -27,29 +27,26 @@ public class SecurityConfig {
     }
 
 
-    @Bean
-    @Order(1)
-    public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
-        return httpSecurity
-                .securityMatcher("/api/**")
-                .authorizeHttpRequests(ar->ar.anyRequest().authenticated())
-                .sessionManagement(sm->sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                .csrf().disable()
-                .httpBasic(Customizer.withDefaults())
-                .build();
+   @Bean
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        http
+            .authorizeHttpRequests(authz -> authz
+                .requestMatchers("/admin/**").hasRole("ADMIN")
+                .requestMatchers("/coach/**").hasRole("COACH")
+                .requestMatchers("/client/**").hasRole("CLIENT")
+                .anyRequest().authenticated()
+            )
+            .formLogin(form -> form
+                .loginPage("/login") // Page de connexion personnalisée (facultatif)
+                .permitAll()
+            )
+            .logout(logout -> logout.permitAll());
+        return http.build();
     }
 
     @Bean
-    @Order(2)
-    public SecurityFilterChain uiSecurityFilterChain(HttpSecurity httpSecurity) throws Exception {
-        return httpSecurity
-                .securityMatcher("/ui/**","/login/**","/logout/**")
-                .authorizeHttpRequests(ar->{
-                    ar.requestMatchers("/ui/").permitAll();
-                    ar.anyRequest().authenticated();
-                })
-                .formLogin(f->f.defaultSuccessUrl("/ui/"))
-                .build();
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
     }
 
     }
