@@ -11,6 +11,6 @@ import lombok.*;
 @AllArgsConstructor
 public class piscine extends ServiceSport {
     private double profondeur;
-    private Double prix;
+    private double prix;
 }
 

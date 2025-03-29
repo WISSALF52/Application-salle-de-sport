@@ -10,6 +10,6 @@ import lombok.*;
 @AllArgsConstructor
 public class fitness extends ServiceSport {
     private boolean coachDisponible;
-    private Double prix;
+    private double prix;
 }
 

@@ -1,8 +1,10 @@
 package org.example.sport.entite;
 import jakarta.persistence.*;
-        import lombok.*;
-
-        import java.time.LocalDateTime;
+import lombok.*;
+import java.time.LocalDateTime;
+import java.util.List;
+import java.util.Set;
+import org.example.sport.entite.Cours;
 
 @Entity
 @Getter

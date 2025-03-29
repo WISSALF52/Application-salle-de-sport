@@ -1,7 +1,7 @@
 package org.example.sport.controllers;
 
 import org.example.sport.entite.ServiceSport;
-import org.example.sport.service.ServiceSportService;
+import org.example.sport.services.ServiceSportService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

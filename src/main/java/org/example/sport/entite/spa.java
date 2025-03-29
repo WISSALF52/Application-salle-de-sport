@@ -15,6 +15,6 @@ public class spa extends ServiceSport {
     private boolean jacuzziDisponible;
     private int nombreCabinesMassage;
     private boolean estheticienneDisponible;
-    private Double prix;
+    private double prix;
 }
 

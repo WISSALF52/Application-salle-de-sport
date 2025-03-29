@@ -1,4 +1,4 @@
-package org.example.sport.controller;
+package org.example.sport.controllers;
 
 import org.example.sport.entite.CreneauHoraire;
 import org.example.sport.services.CreneauHoraireService;

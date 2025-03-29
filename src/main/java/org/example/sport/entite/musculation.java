@@ -13,7 +13,7 @@ public class musculation extends ServiceSport {
     private int nombreAppareils;
     private boolean coachDisponible;
     private String typeMateriel;
-    private Double prix;
+    private double prix;
 }
 
 

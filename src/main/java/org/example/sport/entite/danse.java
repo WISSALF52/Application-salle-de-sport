@@ -11,6 +11,6 @@ import lombok.*;
 @AllArgsConstructor
 public class danse extends ServiceSport {
     private String styleDanse;
-    private Double prix;
+    private double prix;
 }
 

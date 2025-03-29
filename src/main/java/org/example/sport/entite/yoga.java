@@ -12,5 +12,5 @@ import lombok.*;
 @AllArgsConstructor
 public class yoga extends ServiceSport {
     private int niveauDifficulte;
-    private Double prix;// 1 = Débutant, 2 = Intermédiaire, 3 = Avancé
+    private double prix;// 1 = Débutant, 2 = Intermédiaire, 3 = Avancé
 }
