@@ -12,9 +12,9 @@ import java.util.List;
 @DiscriminatorValue("CLIENT")
 public class Client extends Utilisateur {
 
-    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
+   /* @OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
     private List<Reservation> reservations;
 
     @OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
-    private List<Paiement> paiements;
+    private List<Paiement> paiements;*/
 }

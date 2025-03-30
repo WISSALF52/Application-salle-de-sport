@@ -12,6 +12,6 @@ import java.util.List;
 @DiscriminatorValue("COACH")
 public class Coach extends Utilisateur {
 
-    @OneToMany(mappedBy = "coach", cascade = CascadeType.ALL)
-    private List<Cours> cours;
+   /* @OneToMany(mappedBy = "coach", cascade = CascadeType.ALL)
+    private List<Cours> cours;*/
 }
