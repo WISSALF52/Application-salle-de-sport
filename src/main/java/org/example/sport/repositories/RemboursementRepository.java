@@ -9,7 +9,5 @@ import org.example.sport.entite.Remboursement;
 import java.util.List;
 @Repository
 public interface RemboursementRepository extends JpaRepository<Remboursement, Long> {
-    List<Remboursement> findByPaiementId(Long paiementId);
 
-    List<Remboursement> findByStatut(StatutRemboursement statut);
 }

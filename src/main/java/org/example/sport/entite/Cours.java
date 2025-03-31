@@ -16,19 +16,19 @@ public class Cours {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long idcours;
 
     private String nom;
     private String description;
     private int capaciteMax;
 
     @ManyToOne
-    @JoinColumn(name = "coach_id")
+    @JoinColumn(name = "idcoash")
     private Coach coach;
 
     @ManyToOne
-    @JoinColumn(name = "service_id")
-    private ServiceSport service;
+    @JoinColumn(name = "idservicesport")
+    private ServiceSport serviceSport;
 
     @OneToMany(mappedBy = "cours", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<SeanceCours> seances;

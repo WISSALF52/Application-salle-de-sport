@@ -17,20 +17,20 @@ public class SeanceCours {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long idseancecours;
 
     private LocalDateTime dateHeure;
     private int duree;
 
     @ManyToOne
-    @JoinColumn(name = "cours_id")
+    @JoinColumn(name = "idcours")
     private Cours cours;
 
     @ManyToMany
     @JoinTable(
-            name = "seance_client",
-            joinColumns = @JoinColumn(name = "seance_id"),
-            inverseJoinColumns = @JoinColumn(name = "client_id")
+            name = "idseancecours",
+            joinColumns = @JoinColumn(name = "idseance"),
+            inverseJoinColumns = @JoinColumn(name = "idclient")
     )
     private List<Client> participants;
 }

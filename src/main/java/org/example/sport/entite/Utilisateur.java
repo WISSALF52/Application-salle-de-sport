@@ -6,19 +6,18 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.Set;
-
 @Entity
 @Table(name = "utilisateurs")
+@Inheritance(strategy = InheritanceType.JOINED) // Permet d'avoir des tables séparées pour Client et Coach
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Utilisateur {
+public class Utilisateur { // Rend la classe abstraite pour éviter son instanciation directe
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long idutilisateur;
 
     @Column(nullable = false, unique = true, length = 50)
     private String nomUtilisateur;  // ➜ Utilisé pour la connexion
@@ -35,5 +34,12 @@ public class Utilisateur {
     @Column(name = "mot_de_passe", nullable = false)
     private String motDePasse;
 
-
+    // Constructeur sans ID pour simplifier la création d'objets
+    public Utilisateur(String nomUtilisateur, String nom, String prenom, String email, String motDePasse) {
+        this.nomUtilisateur = nomUtilisateur;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.email = email;
+        this.motDePasse = motDePasse;
+    }
 }

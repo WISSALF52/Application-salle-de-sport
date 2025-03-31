@@ -55,6 +55,8 @@ public class Servicecours {
 
     // Méthode pour obtenir tous les cours par catégorie
     public List<Cours> obtenirTousLesCours(String categorie) {
-        return coursRepository.findByCategorie(categorie);
-    }
-}
+        return List.of();
+    }}
+
+
+

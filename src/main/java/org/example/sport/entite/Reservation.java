@@ -16,25 +16,25 @@ public class Reservation {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long idreservation;
 
     private String nomUtilisateur; // Nom de l'utilisateur qui réserve
     private LocalDateTime dateReservation;
 
     @ManyToOne
-    @JoinColumn(name = "cours_id")
+    @JoinColumn(name = "idcours")
     private Cours cours;
 
     @ManyToOne
-    @JoinColumn(name = "service_id")
+    @JoinColumn(name = "idservicesport")
     private ServiceSport service;
 
     @ManyToOne
-    @JoinColumn(name = "creneau_horaire_id")
+    @JoinColumn(name = "idcreneauhoraire")
     private CreneauHoraire creneauHoraire;
 
     @ManyToOne
-    @JoinColumn(name = "client_id")
+    @JoinColumn(name = "idclient")
     private Client client;
 
     // Relation OneToOne avec Paiement

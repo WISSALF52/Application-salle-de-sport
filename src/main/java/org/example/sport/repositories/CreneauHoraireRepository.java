@@ -6,5 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface CreneauHoraireRepository extends JpaRepository<CreneauHoraire, Long> {
-    List<CreneauHoraire> findByServiceSport_Id(Long serviceId); // Utilisez le bon nom de propriété
+ // Utilisez le bon nom de propriété
 }

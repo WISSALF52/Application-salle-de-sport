@@ -1,10 +1,12 @@
 package org.example.sport.services;
+
 import org.example.sport.entite.*;
 import org.example.sport.repositories.PaiementRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.example.sport.repositories.NotificationPaiementRepository;
+
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -21,23 +23,23 @@ public class NotificationService {
      * Crée une nouvelle notification
      */
     @Transactional
-    public NotificationPaiement creerNotification(Long utilisateurId, Long paiementId,
-                                                  Long remboursementId, String message, TypeNotification type) {
+    public NotificationPaiement creerNotification(Long idutilisateur, Long idpaiement,
+                                                  Long idremboursement, String message, TypeNotification type) {
         Utilisateur utilisateur = new Utilisateur();
-        utilisateur.setId(utilisateurId);
+        utilisateur.setIdutilisateur(idutilisateur);
 
         NotificationPaiement notification = new NotificationPaiement();
         notification.setUtilisateur(utilisateur);
 
-        if (paiementId != null) {
+        if (idpaiement != null) {
             Paiement paiement = new Paiement();
-            paiement.setId(paiementId);
+            paiement.setIdpaiement(idpaiement); // Vérifier que l'entité Paiement a bien idpaiement en minuscule
             notification.setPaiement(paiement);
         }
 
-        if (remboursementId != null) {
+        if (idremboursement != null) {
             Remboursement remboursement = new Remboursement();
-            remboursement.setId(remboursementId);
+            remboursement.setIdremboursement(idremboursement); // Vérifier que l'entité Remboursement a bien idremboursement en minuscule
             notification.setRemboursement(remboursement);
         }
 
@@ -61,10 +63,5 @@ public class NotificationService {
         return notificationRepository.save(notification);
     }
 
-    /**
-     * Récupère toutes les notifications non lues d'un utilisateur
-     */
-    public List<NotificationPaiement> obtenirNotificationsNonLues(Long utilisateurId) {
-        return notificationRepository.findByUtilisateurIdAndEstLu(utilisateurId, false);
-    }
+
 }

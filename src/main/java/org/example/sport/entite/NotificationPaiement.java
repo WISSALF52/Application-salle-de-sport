@@ -5,11 +5,11 @@ import java.time.LocalDateTime;
 @Table(name = "notification_paiement")
 public class NotificationPaiement {
     public Long getId() {
-        return id;
+        return idnotification;
     }
 
     public void setId(Long id) {
-        this.id = id;
+        this.idnotification = id;
     }
 
     public Paiement getPaiement() {
@@ -62,7 +62,7 @@ public class NotificationPaiement {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long idnotification;
 
     //@ManyToOne
     //@JoinColumn(name = "utilisateur_id", nullable = false)
@@ -75,6 +75,10 @@ public class NotificationPaiement {
     @ManyToOne
     @JoinColumn(name = "remboursement_id")
     private Remboursement remboursement;
+    @ManyToOne
+    @JoinColumn(name = "client_id")
+    private Client client;  // ou Client si tu as changé le nom de l'entité
+
 
     @Column(nullable = false, length = 255)
     private String message;
@@ -91,5 +95,6 @@ public class NotificationPaiement {
 
 
     public void setUtilisateur(Utilisateur utilisateur) {
+        
     }
 }

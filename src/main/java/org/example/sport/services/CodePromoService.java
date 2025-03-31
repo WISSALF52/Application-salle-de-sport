@@ -57,13 +57,13 @@ public class CodePromoService {
      * Vérifie la validité d'un code promo
      */
     public boolean verifierValiditeCodePromo(String code) {
-        Optional<CodePromo> optCodePromo = codePromoRepository.findByCode(code);
+        Optional<Object> optCodePromo = codePromoRepository.findByCode(code);
 
         if (optCodePromo.isEmpty()) {
             return false;
         }
 
-        CodePromo codePromo = optCodePromo.get();
+        CodePromo codePromo = (CodePromo) optCodePromo.get();
         LocalDateTime maintenant = LocalDateTime.now();
 
         return codePromo.isActif() &&

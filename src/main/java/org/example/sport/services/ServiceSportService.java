@@ -35,8 +35,6 @@ public class ServiceSportService {
     // Mettre à jour un service sportif
     public ServiceSport mettreAJourService(Long id, ServiceSport serviceModifie) {
         ServiceSport serviceExistant = obtenirServiceParId(id);
-        serviceExistant.setNom(serviceModifie.getNom());
-        serviceExistant.setPrix(serviceModifie.getPrix());
         serviceExistant.setCapaciteMax(serviceModifie.getCapaciteMax());
         serviceExistant.setHeureOuverture(serviceModifie.getHeureOuverture());
         serviceExistant.setHeureFermeture(serviceModifie.getHeureFermeture());

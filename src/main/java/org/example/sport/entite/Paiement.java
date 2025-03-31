@@ -1,4 +1,5 @@
 package org.example.sport.entite;
+
 import jakarta.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -9,16 +10,16 @@ public class Paiement {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long idpaiement;
 
+    // Relation avec Client : ManyToOne (Un client peut avoir plusieurs paiements)
     @ManyToOne
-    @JoinColumn(name = "utilisateur_id")
-    private Client utilisateur;
+    @JoinColumn(name = "idclient") // Assurez-vous que ce nom correspond à votre base de données
+    private Client client;
 
-    @lombok.Setter
-    @lombok.Getter
+    // Relation avec Reservation : OneToOne (Chaque paiement correspond à une réservation unique)
     @OneToOne
-    @JoinColumn(name = "reservation_id")
+    @JoinColumn(name = "idreservation")
     private Reservation reservation;
 
     @Column(nullable = false)
@@ -27,14 +28,6 @@ public class Paiement {
     @Column(nullable = false)
     private LocalDateTime datePaiement;
 
-    public Client  getUtilisateur() {
-        return utilisateur;
-    }
-
-    public void setUtilisateur(Client utilisateur) {
-        this.utilisateur = utilisateur;
-    }
-
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private StatutPaiement statut;
@@ -42,16 +35,34 @@ public class Paiement {
     @Column(length = 100)
     private String referencePaiement;
 
+    // Relation avec CodePromo : ManyToOne (Un paiement peut avoir un code promo)
     @ManyToOne
-    @JoinColumn(name = "code_promo_id")
+    @JoinColumn(name = "idcodepromo")
     private CodePromo codePromo;
 
-    public Long getId() {
-        return id;
+    // Getters et Setters
+    public Long getIdpaiement() {
+        return idpaiement;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setIdpaiement(Long idpaiement) {
+        this.idpaiement = idpaiement;
+    }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
+    }
+
+    public Reservation getReservation() {
+        return reservation;
+    }
+
+    public void setReservation(Reservation reservation) {
+        this.reservation = reservation;
     }
 
     public BigDecimal getMontant() {
@@ -92,6 +103,5 @@ public class Paiement {
 
     public void setCodePromo(CodePromo codePromo) {
         this.codePromo = codePromo;
-}
-
+    }
 }

@@ -7,11 +7,11 @@ import java.util.List;
 @Table(name = "remboursement")
 public class Remboursement {
     public Long getId() {
-        return id;
+        return idremboursement;
     }
 
     public void setId(Long id) {
-        this.id = id;
+        this.idremboursement = idremboursement;
     }
 
     public Paiement getPaiement() {
@@ -64,10 +64,10 @@ public class Remboursement {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long idremboursement;
 
     @ManyToOne
-    @JoinColumn(name = "paiement_id", nullable = false)
+    @JoinColumn(name = "idpaiement", nullable = false)
     private Paiement paiement;
 
     @Column(nullable = false)
@@ -87,4 +87,6 @@ public class Remboursement {
     private String referenceRemboursement;
 
 
+    public void setIdremboursement(Long idremboursement) {
+    }
 }
