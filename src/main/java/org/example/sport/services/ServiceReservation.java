@@ -40,7 +40,7 @@ public class ServiceReservation {
 
     public List<Reservation> consulterReservationsClient(Long clientId) {
         return reservationRepository.findAll().stream()
-                .filter(r -> r.getClient().getId().equals(clientId))
+                .filter(r -> r.getClient().getIdutilisateur().equals(clientId))
                 .collect(Collectors.toList());
     }
 

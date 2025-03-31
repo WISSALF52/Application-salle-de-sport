@@ -9,7 +9,7 @@ public class CodePromo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long idcodepromo;
 
     @Column(nullable = false, unique = true, length = 20)
     private String code;
@@ -39,11 +39,11 @@ public class CodePromo {
     private Integer utilisationsActuelles;
 
     public Long getId() {
-        return id;
+        return idcodepromo;
     }
 
     public void setId(Long id) {
-        this.id = id;
+        this.idcodepromo= id;
     }
 
     public String getCode() {

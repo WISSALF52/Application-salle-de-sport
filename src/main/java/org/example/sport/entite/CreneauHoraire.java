@@ -18,7 +18,7 @@ public class CreneauHoraire {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long idcreneauhoraire;
 
     private LocalDateTime dateHeureDebut;
     private LocalDateTime dateHeureFin;
