@@ -42,4 +42,9 @@ public class UtilisateurController {
     public ResponseEntity<Iterable<Utilisateur>> obtenirTousLesUtilisateurs() {
         return ResponseEntity.ok(utilisateurService.obtenirTousLesUtilisateurs());
     }
+
+    @GetMapping("/home")
+    public String home() {
+        return "Welcome, Sportifs";
+    }
 }

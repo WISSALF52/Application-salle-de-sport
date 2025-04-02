@@ -3,13 +3,16 @@ package org.example.sport.services;
 import org.example.sport.entite.Utilisateur;
 import org.example.sport.repositories.UtilisateurRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
 @Service
-public class UtilisateurService {
+public class UtilisateurService implements UserDetailsService {
 
     @Autowired
     private UtilisateurRepository utilisateurRepository;
@@ -42,5 +45,11 @@ public class UtilisateurService {
 
     public Iterable<Utilisateur> obtenirTousLesUtilisateurs() {
         return utilisateurRepository.findAll();
+    }
+
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        return null;
     }
 }
