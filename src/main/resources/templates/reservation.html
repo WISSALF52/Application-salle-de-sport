@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Réservation - FITFORCE</title>
+    <style>
+        :root {
+            --primary-color: #e74c3c;
+            --primary-dark: #c0392b;
+            --secondary-color: #3498db;
+            --light-gray: #f8f9fa;
+            --medium-gray: #e9ecef;
+            --dark-gray: #495057;
+            --white: #ffffff;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 30px;
+            background-color: var(--white);
+            border-radius: 10px;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+        }
+
+        h1 {
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 25px;
+            font-size: 28px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--dark-gray);
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--medium-gray);
+            border-radius: 6px;
+            font-size: 16px;
+            transition: var(--transition);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .payment-methods {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .payment-method {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            border: 2px solid var(--medium-gray);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .payment-method:hover {
+            border-color: var(--primary-color);
+        }
+
+        .payment-method.selected {
+            border-color: var(--primary-color);
+            background-color: rgba(231, 76, 60, 0.1);
+        }
+
+        .payment-method input {
+            width: auto;
+            margin-right: 15px;
+        }
+
+        .payment-method label {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0;
+            cursor: pointer;
+            width: 100%;
+            font-size: 18px;
+        }
+
+        .payment-method img {
+            height: 30px;
+            margin-left: auto;
+        }
+
+        button {
+            background-color: var(--primary-color);
+            color: var(--white);
+            border: none;
+            padding: 15px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            width: 100%;
+            transition: var(--transition);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: var(--primary-dark);
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Formulaire de Réservation</h1>
+
+    <form id="reservation-form" action="/reservation" method="POST">
+        <div class="form-group">
+            <label for="nom">Nom complet:</label>
+            <input type="text" id="nom" name="nom" required placeholder="Votre nom complet">
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required placeholder="exemple@email.com">
+        </div>
+
+        <div class="form-group">
+            <label for="telephone">Téléphone:</label>
+            <input type="tel" id="telephone" name="telephone" required placeholder="06 12 34 56 78">
+        </div>
+
+        <div class="form-group">
+            <label for="date">Date de réservation:</label>
+            <input type="date" id="date" name="date" required>
+        </div>
+
+        <input type="hidden" name="service" value="Karaté">
+        <input type="hidden" name="formule" value="Formule standard">
+        <input type="hidden" name="prix" value="150">
+
+        <h2 style="margin: 25px 0 15px 0;">Méthode de paiement</h2>
+        <div class="payment-methods">
+            <div class="payment-method selected" id="credit-card-method">
+                <input type="radio" id="credit-card" name="payment" value="credit-card" checked>
+                <label for="credit-card">
+                    Carte de crédit
+                    <img src="img_9.png" alt="Visa">
+                    <img src="img_8.png" alt="Mastercard">
+                </label>
+            </div>
+            <div class="payment-method" id="paypal-method">
+                <input type="radio" id="paypal" name="payment" value="paypal">
+                <label for="paypal">
+                    PayPal
+                    <img src="img_10.png" alt="PayPal">
+                </label>
+            </div>
+            <div class="payment-method" id="bank-transfer-method">
+                <input type="radio" id="bank-transfer" name="payment" value="bank-transfer">
+                <label for="bank-transfer">
+                    Virement bancaire
+                </label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="message">Message (optionnel):</label>
+            <textarea id="message" name="message" placeholder="Avez-vous des demandes particulières ?"></textarea>
+        </div>
+
+        <div class="form-group" style="margin-top: 30px;">
+            <input type="checkbox" id="terms" name="terms" required>
+            <label for="terms" style="display: inline; font-weight: normal;">
+                J'accepte les <a href="#" style="color: var(--primary-color);">conditions générales</a>
+            </label>
+        </div>
+
+        <button type="submit">Confirmer la réservation</button>
+    </form>
+</div>
+
+<script>
+    // Gestion des méthodes de paiement
+    const paymentMethods = document.querySelectorAll('.payment-method');
+
+    paymentMethods.forEach(method => {
+        method.addEventListener('click', function() {
+            // Désélectionner toutes les méthodes
+            paymentMethods.forEach(m => m.classList.remove('selected'));
+            // Sélectionner la méthode cliquée
+            this.classList.add('selected');
+            // Mettre à jour le radio button
+            this.querySelector('input').checked = true;
+        });
+    });
+
+    // Validation du formulaire avant soumission
+    document.getElementById('reservation-form').addEventListener('submit', function(e) {
+        e.preventDefault(); // Empêche l'envoi du formulaire par défaut
+
+        const nom = document.getElementById('nom').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const telephone = document.getElementById('telephone').value.trim();
+        const date = document.getElementById('date').value;
+        const terms = document.getElementById('terms').checked;
+
+        // Validation des champs obligatoires
+        if (!nom || !email || !telephone || !date || !terms) {
+            alert("Veuillez remplir tous les champs obligatoires et accepter les conditions");
+            return false;
+        }
+
+        // Validation de l'email
+        if (!email.includes('@') || !email.includes('.')) {
+            alert("Veuillez entrer une adresse email valide");
+            return false;
+        }
+
+        // Si tout est valide, soumettre le formulaire
+        this.submit();
+    });
+</script>
+</body>
+</html>
