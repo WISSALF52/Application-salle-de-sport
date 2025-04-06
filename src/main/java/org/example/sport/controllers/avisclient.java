@@ -2,13 +2,12 @@ package org.example.sport.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-
 @Controller
-public class Homecontroller {
-
+public class avisclient {
     // Méthode pour afficher la page d'accueil
-    @GetMapping("/acceuil")
+    @GetMapping("/avisclient")
     public String home() {
-        return "acceuil";  // Le nom du fichier HTML sans l'extension .html
+        return "avisclient";  // Le nom du fichier HTML sans l'extension .html
     }
 }
+

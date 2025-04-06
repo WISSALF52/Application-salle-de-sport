@@ -1,26 +1,21 @@
 package org.example.sport.entite;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "utilisateurs")
-@Inheritance(strategy = InheritanceType.JOINED) // Permet d'avoir des tables séparées pour Client et Coach
+@Inheritance(strategy = InheritanceType.JOINED)
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Utilisateur { // Rend la classe abstraite pour éviter son instanciation directe
+public class Utilisateur {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idutilisateur;
-
-    @Column(nullable = false, unique = true, length = 50)
-    private String nomUtilisateur;  // ➜ Utilisé pour la connexion
 
     @Column(nullable = false, length = 50)
     private String nom;
@@ -31,15 +26,21 @@ public class Utilisateur { // Rend la classe abstraite pour éviter son instanci
     @Column(nullable = false, unique = true, length = 100)
     private String email;
 
+    // Correction 1 : Renommer en "password" pour matcher le template
     @Column(name = "mot_de_passe", nullable = false)
-    private String motDePasse;
+    private String password;
 
-    // Constructeur sans ID pour simplifier la création d'objets
-    public Utilisateur(String nomUtilisateur, String nom, String prenom, String email, String motDePasse) {
-        this.nomUtilisateur = nomUtilisateur;
-        this.nom = nom;
-        this.prenom = prenom;
-        this.email = email;
-        this.motDePasse = motDePasse;
+    // Correction 2 : Ajouter le champ "username"
+    @Column(nullable = false, unique = true, length = 50)
+    private String username;
+
+    @ElementCollection(fetch = FetchType.EAGER)
+    @CollectionTable(name = "utilisateur_roles", joinColumns = @JoinColumn(name = "utilisateur_id"))
+    @Enumerated(EnumType.STRING)
+    @Column(name = "role")
+    private Set<Role> roles;
+
+    public enum Role {
+        CLIENT, COACH, ADMIN
     }
 }

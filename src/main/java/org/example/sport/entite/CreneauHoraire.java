@@ -24,11 +24,11 @@ public class CreneauHoraire {
     private LocalDateTime dateHeureFin;
 
     @ManyToOne
-    @JoinColumn(name = "service_id")
+    @JoinColumn(name = "idservice")
     private ServiceSport serviceSport;// Un créneau est associé à un service sportif
 
     @ManyToOne
-    @JoinColumn(name = "cours_id")
+    @JoinColumn(name = "idcours")
     private Cours cours; // Un créneau est associé à un seul cours
 
     @OneToMany(mappedBy = "creneauHoraire", cascade = CascadeType.ALL, orphanRemoval = true)

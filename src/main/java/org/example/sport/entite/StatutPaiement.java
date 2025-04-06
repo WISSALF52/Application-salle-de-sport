@@ -6,5 +6,5 @@ public enum StatutPaiement {
     ECHOUE,
     REMBOURSE_PARTIELLEMENT,
     REMBOURSE_TOTALEMENT,
-    ANNULE
+    CONFIRME, ANNULE
 }

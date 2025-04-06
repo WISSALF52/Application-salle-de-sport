@@ -1,54 +1,45 @@
+
 package org.example.sport.entite;
 
 import jakarta.persistence.*;
-import lombok.*;
-
 import java.time.LocalDateTime;
-
 @Entity
-@Table(name = "reservation")
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
-@ToString
 public class Reservation {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idreservation;
+    private Long id;
 
-    private String nomUtilisateur; // Nom de l'utilisateur qui réserve
-    private LocalDateTime dateReservation;
-
-    @ManyToOne
-    @JoinColumn(name = "idcours")
-    private Cours cours;
-
-    @ManyToOne
-    @JoinColumn(name = "idservicesport")
-    private ServiceSport service;
+    private String fullName;
+    private String email;
+    private String phone;
+    private String selectedCourse;
+    private LocalDateTime dateTime;
+    private double price;
 
     @ManyToOne
-    @JoinColumn(name = "idcreneauhoraire")
-    private CreneauHoraire creneauHoraire;
-
-    @ManyToOne
-    @JoinColumn(name = "idclient")
+    @JoinColumn(name = "client_id") // Référence à l'entité Client
     private Client client;
 
-    // Relation OneToOne avec Paiement
-    @OneToOne(mappedBy = "reservation", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Paiement paiement;
+    @ManyToOne
+    @JoinColumn(name = "cours_id") // Référence à l'entité Cours
+    private Cours cours;
 
-    public Client getUtilisateur() {
-        return null;
-    }
-
-    public void setStatut(boolean b) {
-    }
-
+    // Constructeurs, getters et setters
     public LocalDateTime getDateRéservation() {
-        return null;
+        return this.dateTime; // Retourne la date de réservation
     }
+
+    public Client getClient() {
+        return this.client; // Retourne l'objet client associé à cette réservation
+    }
+
+    public LocalDateTime setDateTime(LocalDateTime now) {
+        return now;
+    }
+    @ManyToOne
+    @JoinColumn(name = "creneau_horaire_id")
+    private CreneauHoraire creneauHoraire;
+
+    // Autres getters et setters
 }

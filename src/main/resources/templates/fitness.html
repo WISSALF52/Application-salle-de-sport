@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danse - FitForce</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .info-section h2 {
+            color: #ff5500;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .info-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, #ff5500, #e74c3c);
+        }
+        .price {
+            cursor: pointer !important;
+            color: #ff5500 !important;
+            font-weight: bold !important;
+            transition: all 0.3s;
+        }
+
+        .price:hover {
+            text-decoration: underline;
+            background-color: #fff5f0;
+        }
+
+        /* ... [Conserver tous les autres styles existants] ... */
+
+        .pricing-table td.price {
+            padding: 15px;
+            position: relative;
+        }
+
+        .pricing-table td.price::before {
+            content: "";
+            margin-right: 0;
+        }
+
+
+
+        .pricing-table, .schedule-table {
+            width: 120%;
+            margin-bottom: 2rem;
+            border-collapse: collapse;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            font-weight: bold;
+        }
+
+        .pricing-table th, .pricing-table td,
+        .schedule-table th, .schedule-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+            font-weight: bold;
+        }
+
+        .pricing-table, .schedule-table {
+            width: 100%;
+            margin-bottom: 2rem;
+            border-collapse: collapse;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .pricing-table th, .pricing-table td,
+        .schedule-table th, .schedule-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        .pricing-table th, .schedule-table th {
+            background-color: #ff5500;
+            color: white;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        .pricing-table tr:nth-child(even),
+        .schedule-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .pricing-table tr:hover,
+        .schedule-table tr:hover {
+            background-color: #f1f1f1;
+        }
+
+
+            .price {
+            font-weight: bold;
+            color: #e74c3c;
+            font-size: 1.1rem;
+            font-weight: bold;
+        }
+
+        .highlight {
+            background-color: #fffaf0 !important;
+            font-weight: bold;
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            margin-top: 2rem;
+            padding: 8px 16px;
+            color: #ff5500;
+            text-decoration: none;
+            border: 2px solid #ff5500;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .back-link:hover {
+            background-color: #ff5500;
+            color: white;
+            transform: translateX(-5px);
+        }
+
+        .back-link::before {
+            content: '←';
+            margin-right: 8px;
+            font-size: 1.1rem;
+        }
+        header {
+            background-color: #000;
+            color: white;
+            padding: 1.5rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #fff;
+            letter-spacing: 2px;
+        }
+
+        .logo span {
+            color: #ff5500;
+        }
+
+        .menu {
+            display: flex;
+            list-style: none;
+        }
+
+        .menu li {
+            margin-left: 2rem;
+        }
+
+        .menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .menu a:hover {
+            color: #ff5500;
+        }
+
+        /* Section principale */
+        .service-detail {
+            padding: 9rem 0 4rem;
+            background: linear-gradient(45deg, #fff8f5, #ffffff);
+        }
+
+        .service-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .service-header h1 {
+            font-size: 3rem;
+            color: #ff5500;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .service-content {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+        }
+
+        /* Image en premier */
+        .main-image {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            margin-bottom: 2rem;
+        }
+
+        .main-image img {
+            width: 100%;
+            height: 600px;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .main-image:hover img {
+            transform: scale(1.03);
+        }
+
+        /* Tableaux stylisés */
+        .schedule-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 15px;
+            border: 2px solid #ff5500;
+            box-shadow: 0 10px 30px rgba(255,85,0,0.1);
+        }
+
+        .schedule-table th {
+            background: linear-gradient(135deg, #ff5500, #e74c3c);
+            color: white;
+            padding: 1.2rem;
+            text-transform: uppercase;
+        }
+
+        .schedule-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #ffe5d9;
+        }
+
+        .schedule-table tr:hover {
+            background: #fff5f0;
+        }
+
+        .pricing-table {
+            margin: 2rem 0;
+            border: 2px solid #ff5500;
+            background: white;
+        }
+
+        .price {
+            color: #e74c3c;
+            font-weight: bold;
+            position: relative;
+        }
+
+        .price::before {
+            content: "•";
+            color: #ff5500;
+            margin-right: 8px;
+        }
+
+        /* Styles de danse */
+        .dance-styles {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .style-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 2px solid #ffe5d9;
+            transition: all 0.3s;
+            text-align: center;
+        }
+
+        .style-card:hover {
+            border-color: #ff5500;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(255,85,0,0.1);
+        }
+
+        .style-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .service-header h1 {
+                font-size: 2rem;
+            }
+
+            .schedule-table, .pricing-table {
+                overflow-x: auto;
+                display: block;
+            }
+        }
+
+        /* Footer */
+        footer {
+            background-color: #000;
+            color: white;
+            padding: 2rem 0;
+            margin-top: 4rem;
+        }
+    </style>
+</head>
+<script>
+    function selectTarif(type, prix) {
+        localStorage.setItem('selectedTarif', JSON.stringify({
+            type: type,
+            prix: prix,
+            date: new Date().toLocaleDateString()
+        }));
+        window.location.href = 'reservation';
+    }
+</script>
+<body>
+<header>
+    <div class="container">
+        <nav>
+            <div class="logo">FIT<span>FORCE</span></div>
+            <ul class="menu">
+                <li><a href="acceuil">Accueil</a></li>
+                <li><a href="serviceslist">Nos Services</a></li>
+                <li><a href="avisclient">Avis Clients</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<section class="service-detail">
+    <div class="container">
+        <div class="service-header">
+            <h1>Fitness FitForce</h1>
+            <p>Découvrez nos cours de fitness variés adaptés à tous les niveaux, encadrés par des coachs certifiés dans une ambiance dynamique et motivante.</p>
+        </div>
+
+        <div class="service-content">
+            <!-- Image en premier -->
+            <div class="main-image">
+                <img src="img_4.png" alt="Cours de Danse">
+            </div>
+
+            <!-- Créneaux horaires -->
+            <div class="info-section">
+                <h2>Horaires des cours</h2>
+                <table class="schedule-table">
+                    <tr>
+                        <th>Type de cours</th>
+                        <th>Lundi</th>
+                        <th>Mercredi</th>
+                        <th>Vendredi</th>
+                        <th>Samedi</th>
+                    </tr>
+                    <tr>
+                        <td>Cardio Fitness</td>
+                        <td>9h-10h</td>
+                        <td>18h-19h</td>
+                        <td>9h-10h</td>
+                        <td>10h-11h</td>
+                    </tr>
+                    <tr>
+                        <td>HIIT</td>
+                        <td>18h-19h</td>
+                        <td>12h-13h</td>
+                        <td>18h-19h</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>Step</td>
+                        <td>12h-13h</td>
+                        <td>9h-10h</td>
+                        <td>12h-13h</td>
+                        <td>11h-12h</td>
+                    </tr>
+                    <tr>
+                        <td>Body Sculpt</td>
+                        <td>19h-20h</td>
+                        <td>19h-20h</td>
+                        <td>19h-20h</td>
+                        <td>-</td>
+                    </tr>
+
+                </table>
+
+
+
+            </div>
+
+            <!-- Tarifs -->
+            <div class="info-section">
+                <h2>Tarifs Fitness</h2>
+
+                <table class="pricing-table">
+                    <tr>
+                        <th>Formule</th>
+                        <th>Description</th>
+                        <th>Prix</th>
+                    </tr>
+                    <tr>
+                        <td>Séance découverte</td>
+                        <td>1 cours d'essai</td>
+                        <td class="price" onclick="redirectToReservation('Séance découverte', '50')">50 DH</td>
+                    </tr>
+                    <tr>
+                        <td>Abonnement mensuel</td>
+                        <td>Accès illimité</td>
+                        <td class="price" onclick="redirectToReservation('Abonnement mensuel', '600')">600 DH</td>
+                    </tr>
+                    <tr>
+                        <td>Abonnement trimestriel</td>
+                        <td>3 mois illimité</td>
+                        <td class="price" onclick="redirectToReservation('Abonnement trimestriel', '1500')">1500 DH</td>
+                    </tr>
+                    <tr class="highlight">
+                        <td>Abonnement annuel</td>
+                        <td>12 mois illimité</td>
+                        <td class="price" onclick="redirectToReservation('Abonnement annuel', '5000')">5000 DH</td>
+                    </tr>
+                </table>
+
+
+            </div>
+            <div class="info-section">
+                <h2>Nos Coachs Fitness</h2>
+                <p>Nos coachs certifiés vous accompagnent avec des programmes personnalisés :</p>
+                <ul style="margin-top: 15px; margin-left: 20px;">
+                    <li>Karim - Spécialiste HIIT et renforcement</li>
+                    <li>Sophia - Experte en cardio training</li>
+                    <li>Mehdi - Champion de Step</li>
+
+                </ul>
+            </div>
+
+
+
+
+
+            <a href="serviceslist" class="back-link">Retour aux services</a>
+        </div>
+    </div>
+</section>
+
+
+<footer>
+    <div class="container">
+        <!-- Contenu du footer -->
+    </div>
+</footer>
+<script>
+    // Script de redirection CORRIGÉ
+    function redirectToReservation(planType, planPrice) {
+        window.location.href = `reservation?plan=${encodeURIComponent(planType)}&price=${encodeURIComponent(planPrice)}`;
+    }
+</script>
+</body>
+</html>

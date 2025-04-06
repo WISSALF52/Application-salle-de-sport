@@ -26,6 +26,8 @@ public abstract class ServiceSport {
 
     @OneToMany(mappedBy = "serviceSport")
     private List<Cours> cours;
+
+
 }
 
 
