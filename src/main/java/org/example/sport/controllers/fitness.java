@@ -34,17 +34,7 @@ public class fitness {
     public String piscinePage() {
         return "piscine"; // Correspond à musculation.html dans le dossier templates
     }
-    @GetMapping("/reservation")
-    public String reservationPage(@RequestParam(name = "plan", required = false) String plan,
-                                  @RequestParam(name = "price", required = false) String price,
-                                  Model model) {
 
-        if(plan != null && price != null) {
-            model.addAttribute("selectedPlan", plan);
-            model.addAttribute("selectedPrice", price);
-        }
-
-        return "reservation";
     }
 
-}
+

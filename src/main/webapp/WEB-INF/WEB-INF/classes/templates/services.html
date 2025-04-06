@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nos Services - FitForce</title>
+    <style>
+        /* Reset et styles de base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: #f8f8f8;
+            color: #333;
+            line-height: 1.6;
+        }
+        body {
+            transform: scale(1.3); /* Agrandit tout le contenu de 20% */
+            transform-origin: top left;
+            width: 80.2%; /* Compense l'agrandissement (100%/1.2) */
+        }
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;/*t avec seulement 5px de hauteur */
+            background: linear-gradient(90deg, #e74c3c, #3498db);
+            transition: height 0.3s; /* Animation de la hauteur */
+            z-index: -1;
+        }
+
+        .service-card:hover::before {
+            height: 100%; /* S'étend sur toute la hauteur au survol */
+        }
+        /* Header et navigation */
+        header {
+            background-color: #000;
+            color: white;
+            padding: 1.5rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #fff;
+            letter-spacing: 2px;
+        }
+
+        .logo span {
+            color: #ff5500;
+        }
+
+        .menu {
+            display: flex;
+            list-style: none;
+        }
+
+        .menu li {
+            margin-left: 2rem;
+        }
+
+        .menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .menu a:hover {
+            color: #ff5500;
+        }
+
+        /* Section Services */
+        .services {
+            padding: 7rem 0 5rem;
+            background-color: white;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2.5rem;
+            color: #000;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            width: 95%; /* Ajustement pour la mise à l'échelle */
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background-color: #f8f8f8;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        .service-icon i {
+            font-size: 2.5rem;
+            color: #e74c3c;
+            margin-bottom: 20px;
+            transition: all 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .service-img {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .service-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .service-card:hover .service-img img {
+            transform: scale(1.1);
+        }
+
+        .service-content {
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .service-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #ff5500;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #000;
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-section h3 {
+            color: #ff5500;
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+
+        .footer-section p, .footer-section a {
+            color: #ccc;
+            margin-bottom: 0.8rem;
+            display: block;
+            text-decoration: none;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .social-icons a {
+            display: inline-block;
+            margin-right: 1rem;
+            color: #ff5500;
+            font-size: 1.5rem;
+        }
+
+        .copyright {
+            padding-top: 1.5rem;
+            border-top: 1px solid #333;
+            color: #999;
+        }
+    </style>
+</head>
+<body>
+<!-- En-tête avec menu -->
+<header>
+    <div class="container">
+        <nav>
+            <div class="logo">FIT<span>FORCE</span></div>
+            <ul class="menu">
+                <li><a href="acceuil">Accueil</a></li>
+                <li><a href="serviceslist">Nos Services</a></li>
+                <li><a href="avisclient">Avis Clients</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<!-- Section Services -->
+<section class="services">
+    <div class="container">
+        <h2 class="section-title">NOS SERVICES</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-dumbbell"></i>
+                </div>
+                <div class="service-img">
+                    <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Fitness">
+                </div>
+                <div class="service-content">
+                    <h3>Fitness</h3>
+                    <p>Des programmes variés pour tous les niveaux avec des équipements dernier cri</p>
+                    </p>
+                    <!-- Dans chaque service-card, remplacez le lien par : -->
+                    <a href="fitness" class="service-link">En savoir plus</a>
+                    <!-- Pour chaque service, adaptez le nom du fichier : -->
+                    <!-- service-musculation.html, service-yoga.html, etc. -->
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-img">
+                    <img src="https://images.unsplash.com/photo-1581009137042-c552e485697a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Musculation">
+                </div>
+                <div class="service-content">
+                    <h3>Musculation</h3>
+                    <p>Zone dédiée avec machines guidées et poids libres pour un entraînement complet</p>
+                    </p>
+
+                    </p>
+                    <a href="musculation" class="service-link">En savoir plus</a>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-img">
+                    <img src="https://media.istockphoto.com/id/1402927176/photo/group-meditation-class.jpg?s=612x612&w=0&k=20&c=dpP6Ou1OdyUdU9Wc_sa2Va7iLTdVotDLBZXzPlX-Spk=" alt="Yoga">
+                </div>
+                <div class="service-content">
+                    <h3>Yoga</h3>
+                    <p>Des cours pour tous niveaux dans un espace zen et apaisant</p>
+                    </p>
+                    <a href="yoga" class="service-link">En savoir plus</a>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-img">
+                    <img src="https://images.unsplash.com/photo-1547153760-18fc86324498?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Danse">
+                </div>
+                <div class="service-content">
+                    <h3>Danse</h3>
+                    <p>Zumba, hip-hop, danse contemporaine... Trouvez le rythme qui vous correspond</p>
+                    </p>
+                    <a href="dance" class="service-link">En savoir plus</a>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-img">
+                    <img src="https://media.istockphoto.com/id/2194020805/photo/teacher-and-students-on-hydrotherapy-on-a-swimming-pool.jpg?s=612x612&w=0&k=20&c=-TNhoQgKpPA-FB3Z0vFnp9T18dqPufYseVMMvBehZXo=" alt="Piscine">
+                </div>
+                <div class="service-content">
+                    <h3>Piscine</h3>
+                    <p>Bassin de 25m pour nageurs et cours d'aquagym</p>
+                    </p>
+                    <a href="piscine" class="service-link">En savoir plus</a>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-img">
+                    <img src="img_7.png" alt="Spa">
+                </div>
+                <div class="service-content">
+                    <h3>Spa</h3>
+                    <p>Espace détente avec sauna, hammam et massages pour récupérer après l'effort</p>
+                    </p>
+                    <a href="spa" class="service-link">En savoir plus</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>FitForce</h3>
+                <p>Votre salle de sport premium pour un entraînement complet dans les meilleures conditions.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Liens rapides</h3>
+                <a href="acceuil">Accueil</a>
+                <a href="serviceslist">Nos Services</a>
+                <a href="avisclient">Avis Clients</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <div class="footer-section">
+                <h3>Réseaux sociaux</h3>
+                <div class="social-icons">
+                    <a href="#">FB</a>
+                    <a href="#">IG</a>
+                    <a href="#">TW</a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 FitForce. Tous droits réservés.</p>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

@@ -1,5 +1,6 @@
 package org.example.sport.controllers;
 
+import jakarta.servlet.http.HttpSession;
 import org.example.sport.entite.Reservation;
 import org.example.sport.services.ServiceReservation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,10 +10,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import java.time.LocalDateTime;
-
 @Controller
-@RequestMapping("/reservations")
+@RequestMapping("/reservation")
 public class ReservationController {
 
     private final ServiceReservation reservationService;
@@ -22,38 +21,38 @@ public class ReservationController {
         this.reservationService = reservationService;
     }
 
-    @GetMapping("/form")
+    // Affiche le formulaire de réservation
+    @GetMapping
     public String showReservationForm(Model model) {
         model.addAttribute("reservation", new Reservation());
-        return "reservation-form";
+        return "reservation"; // correspond à reservation.html
     }
 
+    // Traite la soumission du formulaire
     @PostMapping
-    public String submitReservationForm(
-            @Valid @ModelAttribute("reservation") Reservation reservation,
-            BindingResult bindingResult,
-            RedirectAttributes redirectAttributes
-    ) {
-        // Validation des erreurs
+    public String processReservation(@ModelAttribute("reservation") Reservation reservation,
+                                     BindingResult bindingResult,
+                                     RedirectAttributes redirectAttributes) {
+
         if (bindingResult.hasErrors()) {
-            return "reservation";
+            return "reservation"; // reste sur la page si erreurs
         }
 
-        // Ajout de la date/heure actuelle
-        reservation.setDateTime(LocalDateTime.now());
+        Reservation savedReservation = reservationService.saveReservation(reservation);
 
-        // Sauvegarde en base de données
-        reservationService.save(reservation);
+        // Ajoute les attributs pour la redirection
+        redirectAttributes.addFlashAttribute("reservation", savedReservation);
+        redirectAttributes.addFlashAttribute("success", true);
 
-        // Préparation des attributs pour la redirection
-        redirectAttributes.addFlashAttribute("successMessage", "Réservation confirmée !");
-        redirectAttributes.addFlashAttribute("reservation", reservation);
-
-        return "redirect:/reservations/confirmation";
+        return "redirect:/reservation/confirmation";
     }
 
+    // Affiche la page de confirmation
     @GetMapping("/confirmation")
-    public String showConfirmationPage() {
-        return "confirmation";
+    public String showConfirmation(Model model) {
+        if (!model.containsAttribute("reservation")) {
+            return "redirect:/reservation"; // redirige si accès direct
+        }
+        return "confirmation"; // correspond à confirmation.html
     }
 }

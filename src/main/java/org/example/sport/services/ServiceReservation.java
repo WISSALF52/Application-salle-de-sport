@@ -1,57 +1,60 @@
 package org.example.sport.services;
-import org.example.sport.repositories.ServiceSportRepository;
+
 import org.example.sport.entite.Reservation;
 import org.example.sport.repositories.ReservationRepository;
-import org.example.sport.repositories.UtilisateurRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
 import java.util.List;
-import java.util.stream.Collectors;
-@Service
+import java.util.Optional;
 
+@Service
 public class ServiceReservation {
 
-    @Autowired
-    private ReservationRepository reservationRepository ;
+    private final ReservationRepository reservationRepository;
 
-    @Autowired
-    private UtilisateurRepository clientRepository;
+    // Injection du repository par constructeur
+    public ServiceReservation(ReservationRepository reservationRepository) {
+        this.reservationRepository = reservationRepository;
+    }
 
-    @Autowired
-    private ServiceSportRepository serviceSportRepository;
 
+    // Créer une nouvelle réservation
     public Reservation creerReservation(Reservation reservation) {
-        if (verifierDisponibilite(reservation.getDateRéservation())){
-            return reservationRepository.save(reservation);
-        }
-        throw new RuntimeException("Créneau non disponible");
+        return reservationRepository.save(reservation);
     }
 
-    private boolean verifierDisponibilite(LocalDateTime dateHeure) {
-        return reservationRepository.findAll().stream()
-                .noneMatch(r -> r.getDateRéservation().equals(dateHeure));
+    // Obtenir toutes les réservations
+    public List<Reservation> obtenirToutesLesReservations() {
+        return reservationRepository.findAll();
     }
 
+    // Obtenir une réservation par ID
+    public Optional<Reservation> obtenirReservationParId(Long id) {
+        return reservationRepository.findById(id);
+    }
+
+    // Annuler une réservation
     public void annulerReservation(Long id) {
         reservationRepository.deleteById(id);
     }
 
-    public List<Reservation> consulterReservationsClient(Long clientId) {
-        return reservationRepository.findAll().stream()
-                .filter(r -> r.getClient().getClass().equals(clientId))
-                .collect(Collectors.toList());
+    // Confirmer une réservation
+    public Reservation confirmerReservation(Long id) {
+        Optional<Reservation> optionalReservation = reservationRepository.findById(id);
+        if (optionalReservation.isPresent()) {
+            Reservation reservation = optionalReservation.get();
+
+            return reservationRepository.save(reservation);
+        }
+        throw new RuntimeException("Réservation non trouvée avec l'id : " + id);
     }
 
 
-    public Reservation obtenirReservationParId(Long reservationId) {
-        return null;
-    }
+    public Reservation getReservationById(Long id) {
+    return null;}
+    public Reservation saveReservation(Reservation reservation) {
 
-    public void mettreAJourReservation(Reservation reservation) {
-    }
-
-    public void save(Reservation reservation) {
+        reservationRepository.save(reservation);
+        return reservation;
     }
 }

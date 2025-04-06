@@ -22,9 +22,6 @@ public class Cours {
     private String description;
     private int capaciteMax;
 
-    @ManyToOne
-    @JoinColumn(name = "idcoash")
-    private Coach coach;
 
     @ManyToOne
     @JoinColumn(name = "idservicesport")

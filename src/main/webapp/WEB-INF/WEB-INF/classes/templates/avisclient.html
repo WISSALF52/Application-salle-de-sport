@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitForce - Avis Clients</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Reset et styles de base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', Arial, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header */
+        header {
+            background-color: #000;
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: white;
+            font-size: 28px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .logo span {
+            color: #ff6b6b;
+        }
+
+        .menu {
+            display: flex;
+            list-style: none;
+        }
+
+        .menu li {
+            margin-left: 30px;
+        }
+
+        .menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .menu a:hover {
+            color: #ff6b6b;
+        }
+
+        /* Section Témoignages */
+        .testimonials-maroc {
+            padding: 80px 0;
+            background-color: white;
+            margin-top: 40px; /* Ajout de cette ligne pour créer l'espace */
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            font-size: 36px;
+            color: #222;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 3px;
+            background-color: #ff6b6b;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* Cartes de témoignage */
+        .testimonial-card {
+            background: #fff;
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .client-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .client-photo {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 20px;
+            border: 3px solid #ff6b6b;
+        }
+
+        .client-name {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 5px;
+            color: #222;
+        }
+
+        .client-city {
+            color: #777;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .rating {
+            color: #ffc107;
+            font-size: 18px;
+            letter-spacing: 2px;
+        }
+
+        .testimonial-text {
+            font-size: 16px;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+            }
+
+            .logo {
+                margin-bottom: 20px;
+            }
+
+            .menu {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .menu li {
+                margin: 0 10px 10px;
+            }
+
+            .section-title {
+                font-size: 28px;
+            }
+
+            .client-info {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .client-photo {
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="container">
+        <nav>
+            <div class="logo">FIT<span>FORCE</span></div>
+            <ul class="menu">
+                <li><a href="acceuil">Accueil</a></li>
+                <li><a href="serviceslist">Services</a></li>
+                <li><a href="avisclient">Avis</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<section class="testimonials-maroc">
+    <div class="container">
+        <h2 class="section-title">Témoignages de nos membres</h2>
+
+        <div class="testimonial-card">
+            <div class="client-info">
+                <img src="https://scontent-mad1-1.xx.fbcdn.net/v/t39.30808-6/481142670_1176407370824525_7150043424718755450_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=a5f93a&_nc_eui2=AeGjSABRij6gI0ZSbFpPgb2rjTZ9FHB3iP6NNn0UcHeI_pOmTTCBooNrIlG92mp7PRF0z9-xeZWmSrCa_ppf8riS&_nc_ohc=JshHOrowCAAQ7kNvwFR2wp2&_nc_oc=AdlLMQOSiD9WYwbziDkGxqkgcY6OM1vaIwF_VtkJE4T23T_Jks655G3aOTe3SO81KDk&_nc_zt=23&_nc_ht=scontent-mad1-1.xx&_nc_gid=lahNSg2vNa2_KSBYhqhF5w&oh=00_AYHxr_RAdrlvJUiJ13gQ1kEBsp3XVn5FG1Fr6W7f-S7DzQ&oe=67F5B48B" alt="Amina" class="client-photo">
+                <div>
+                    <h3 class="client-name">Ikram El Jazouli</h3>
+                    <p class="client-city">Casablanca</p>
+                    <div class="rating">★★★★★</div>
+                </div>
+            </div>
+            <p class="testimonial-text">
+                La meilleure salle de Casablanca ! Les coachs sont à l'écoute et les programmes
+                adaptés à nos besoins. Je recommande vivement les cours de HIIT.
+            </p>
+        </div>
+
+        <div class="testimonial-card">
+            <div class="client-info">
+                <img src="https://scontent-mad2-1.xx.fbcdn.net/v/t39.30808-6/481507749_642015288771641_3217293175048911413_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=a5f93a&_nc_eui2=AeF-TgUJHvpxJLVhFvdlB0vWF0qY0qfl1mMXSpjSp-XWY13QnyGnMZtY131AujqPhO5m2r5tllzc35DOlYfglkZJ&_nc_ohc=xS_eIAbcw8kQ7kNvwEivJr-&_nc_oc=AdmODwvu-ivHonGAMBoC6c2ZSG5zvtU7_T5pTVmxjW7_kIkXM_5lhLzvkCgYDVKpYnA&_nc_zt=23&_nc_ht=scontent-mad2-1.xx&_nc_gid=ZKPRm2UoAUf3FM2zasVY7A&oh=00_AYGPM5b394hp8tFGngd9sgfaiV5K4cxY3zEa39lW7aiq3w&oe=67F5AFAA" alt="Youssef" class="client-photo">
+                <div>
+                    <h3 class="client-name">Youssef Benali</h3>
+                    <p class="client-city">Rabat</p>
+                    <div class="rating">★★★★☆</div>
+                </div>
+            </div>
+            <p class="testimonial-text">
+                Espace moderne et bien équipé. J'apprécie particulièrement les horaires flexibles
+                qui s'adaptent à mon emploi du temps chargé. Merci FitForce !
+            </p>
+        </div>
+
+        <div class="testimonial-card">
+            <div class="client-info">
+                <img src="https://scontent-mad1-1.xx.fbcdn.net/v/t39.30808-6/259881397_936707340599849_629573294740654173_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeFvT740DbrPb95-nUSptccBYTTbwVkotDBhNNvBWSi0MAVsfUKlaftfm-9_t3pA36fzJ0pt3VG4850XTG2CTWS9&_nc_ohc=vqERJg-tK-YQ7kNvwFA2oXT&_nc_oc=AdlIDuaA9GgjVBbe3NegcU8emBYRQ5AEl-tfZ8TyoXvo6PCjeqPhxrQIVMfDYzvdWPc&_nc_zt=23&_nc_ht=scontent-mad1-1.xx&_nc_gid=GFAXYxOvw6ldlpRnKUJxEg&oh=00_AYExNBSYCZLqdvIl5zoQsVpa96hFxPOgBxXnc48_znVFFw&oe=67F5BB9F" alt="Fatima" class="client-photo">
+                <div>
+                    <h3 class="client-name">Salma Merbati</h3>
+                        <p class="client-city">Marrakech</p>
+                        <div class="rating">★★★★★</div>
+                </div>
+            </div>
+            <p class="testimonial-text">
+                Un environnement motivant et féminin. Les cours de yoga du vendredi matin sont
+                devenus mon rituel bien-être. Merci pour cette énergie positive !
+            </p>
+        </div>
+
+        <div class="testimonial-card">
+            <div class="client-info">
+                <img src="https://media.licdn.com/dms/image/v2/D4E03AQGSlLgzGqU2Kg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1715702809171?e=1749081600&v=beta&t=JgmGo2vauS_N7ghJCQPf9b4hbpCXdS4bZKUKBO9I_xo" alt="Mehdi" class="client-photo">
+                <div>
+                    <h3 class="client-name">Mehdi Alami</h3>
+                    <p class="client-city">Tanger</p>
+                    <div class="rating">★★★★★</div>
+                </div>
+            </div>
+            <p class="testimonial-text">
+                En tant que sportif professionnel, je trouve chez FitForce tout le matériel
+                nécessaire pour mes entraînements intensifs. Service impeccable !
+            </p>
+        </div>
+    </div>
+</section>
+</body>

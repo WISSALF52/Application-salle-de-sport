@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Réservation - FitForce</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: #f8f8f8;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #000;
+            color: white;
+            padding: 1.5rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #fff;
+            letter-spacing: 2px;
+        }
+
+        .logo span {
+            color: #ff5500;
+        }
+
+        .menu {
+            display: flex;
+            list-style: none;
+        }
+
+        .menu li {
+            margin-left: 2rem;
+        }
+
+        .menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .menu a:hover {
+            color: #ff5500;
+        }
+
+        /* Styles spécifiques à la page Réservation */
+        .reservation-section {
+            padding: 7rem 0 5rem;
+            background-color: white;
+        }
+
+        .reservation-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .reservation-header h1 {
+            font-size: 2.5rem;
+            color: #ff5500;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .reservation-form {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .btn-submit {
+            background-color: #ff5500;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: block;
+            width: 100%;
+            margin-top: 1.5rem;
+        }
+
+        .btn-submit:hover {
+            background-color: #e74c3c;
+            transform: translateY(-2px);
+        }
+
+        .price-summary {
+            background-color: #f9f9f9;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+
+        .price-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+
+        .price-total {
+            font-weight: bold;
+            font-size: 1.2rem;
+            border-top: 1px solid #ddd;
+            padding-top: 1rem;
+            margin-top: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #000;
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-section h3 {
+            color: #ff5500;
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+
+        .footer-section p, .footer-section a {
+            color: #ccc;
+            margin-bottom: 0.8rem;
+            display: block;
+            text-decoration: none;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .social-icons a {
+            display: inline-block;
+            margin-right: 1rem;
+            color: #ff5500;
+            font-size: 1.5rem;
+        }
+
+        .copyright {
+            padding-top: 1.5rem;
+            border-top: 1px solid #333;
+            color: #999;
+        }
+    </style>
+</head>
+<body>
+<!-- En-tête avec menu -->
+<header>
+    <div class="container">
+        <nav>
+            <div class="logo">FIT<span>FORCE</span></div>
+            <ul class="menu">
+                <li><a href="acceuil">Accueil</a></li>
+                <li><a href="serviceslist">Nos Services</a></li>
+                <li><a href="avisclient">Avis Clients</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<!-- Section Réservation -->
+<section class="reservation-section">
+    <div class="container">
+        <div class="reservation-header">
+            <h1>Réservation de Cours</h1>
+            <p>Complétez le formulaire pour réserver votre séance de fitness</p>
+        </div>
+
+        <div class="reservation-form">
+            <div class="price-summary">
+                <h3>Récapitulatif de votre sélection</h3>
+                <div class="price-item">
+                    <span>Formule choisie:</span>
+                    <span id="selected-plan">Abonnement mensuel</span>
+                </div>
+                <div class="price-item">
+                    <span>Prix:</span>
+                    <span id="selected-price">600 DH</span>
+                </div>
+                <div class="price-item price-total">
+                    <span>Total à payer:</span>
+                    <span id="total-price">600 DH</span>
+                </div>
+            </div>
+
+            <form id="reservation-form">
+                <input type="hidden" id="plan-type" name="plan-type">
+                <input type="hidden" id="plan-price" name="plan-price">
+
+                <div class="form-group">
+                    <label for="fullname" class="form-label">Nom complet</label>
+                    <input type="text" id="fullname" name="fullname" class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" id="email" name="email" class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone" class="form-label">Téléphone</label>
+                    <input type="tel" id="phone" name="phone" class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="course" class="form-label">Cours souhaité</label>
+                    <select id="course" name="course" class="form-control" required>
+                        <option value="">Sélectionnez un cours</option>
+                        <option value="HIIT">HIIT</option>
+                        <option value="Body Sculpt">Body Sculpt</option>
+                        <option value="Zumba">Zumba</option>
+                        <option value="Step">Step</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="date" class="form-label">Date souhaitée</label>
+                    <input type="date" id="date" name="date" class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="time" class="form-label">Créneau horaire</label>
+                    <select id="time" name="time" class="form-control" required>
+                        <option value="">Sélectionnez un horaire</option>
+                        <option value="9h-10h">9h-10h</option>
+                        <option value="12h-13h">12h-13h</option>
+                        <option value="19h-20h">19h-20h</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Méthode de paiement</label>
+                    <div>
+                        <input type="radio" id="credit-card" name="payment" value="credit-card" checked>
+                        <label for="credit-card">Carte de crédit</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="paypal" name="payment" value="paypal">
+                        <label for="paypal">PayPal</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="on-site" name="payment" value="on-site">
+                        <label for="on-site">Paiement sur place</label>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-submit">Confirmer la réservation</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>FitForce</h3>
+                <p>Votre salle de sport premium pour un entraînement complet dans les meilleures conditions.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Liens rapides</h3>
+                <a href="acceuil">Accueil</a>
+                <a href="serviceslist">Nos Services</a>
+                <a href="avisclient">Avis Clients</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <div class="footer-section">
+                <h3>Réseaux sociaux</h3>
+                <div class="social-icons">
+                    <a href="#">FB</a>
+                    <a href="#">IG</a>
+                    <a href="#">TW</a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 FitForce. Tous droits réservés.</p>
+        </div>
+    </div>
+</footer>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Récupération des paramètres de l'URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const planType = urlParams.get('plan');
+        const planPrice = urlParams.get('price');
+
+        // Mise à jour des informations de la réservation
+        if (planType && planPrice) {
+            document.getElementById('selected-plan').textContent = planType;
+            document.getElementById('selected-price').textContent = planPrice + ' DH';
+            document.getElementById('total-price').textContent = planPrice + ' DH';
+            document.getElementById('plan-type').value = planType;
+            document.getElementById('plan-price').value = planPrice;
+        }
+
+        // Gestion de la soumission du formulaire
+        document.getElementById('reservation-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Récupération des données du formulaire
+            const formData = {
+                fullname: document.getElementById('fullname').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                course: document.getElementById('course').value,
+                date: document.getElementById('date').value,
+                time: document.getElementById('time').value,
+                payment: document.querySelector('input[name="payment"]:checked').value,
+                planType: document.getElementById('plan-type').value,
+                planPrice: document.getElementById('plan-price').value
+            };
+
+            // Envoi des données au backend
+            fetch('http://localhost:8083/dance/reservation', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData)
+            })
+                .then(response => {
+                    if (response.ok) {
+                        return response.json();
+                    }
+                    throw new Error('Erreur lors de la réservation');
+                })
+                .then(data => {
+                    alert('Réservation confirmée! Un email de confirmation vous a été envoyé.');
+                    // Redirection vers la page de confirmation
+                    window.location.href = 'confirmation.html?id=' + data.id;
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Une erreur est survenue: ' + error.message);
+                });
+        });
+
+        // Chargement des cours disponibles
+        loadAvailableCourses();
+    });
+
+    function loadAvailableCourses() {
+        fetch('http://localhost:8083/serviceslist?categorie=Danse')
+            .then(response => response.json())
+            .then(courses => {
+                const select = document.getElementById('course');
+                courses.forEach(course => {
+                    const option = document.createElement('option');
+                    option.value = course.nom;
+                    option.textContent = course.nom;
+                    select.appendChild(option);
+                });
+            })
+            .catch(error => {
+                console.error('Erreur lors du chargement des cours:', error);
+            });
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscription - FitForce</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Styles inchangés */
+        body { background-color: #f8f9fa; font-family: 'Arial', sans-serif; }
+        .auth-container { max-width: 500px; margin: 50px auto; padding: 30px; background: white; border-radius: 10px; box-shadow: 0 0 20px rgba(0,0,0,0.1); }
+        .logo { text-align: center; margin-bottom: 30px; font-size: 2rem; font-weight: bold; }
+        .logo span { color: #ff5500; }
+        .form-control { height: 45px; margin-bottom: 15px; }
+        .btn-register { background-color: #ff5500; color: white; border: none; height: 45px; font-weight: 600; width: 100%; }
+        .btn-register:hover { background-color: #e74c3c; }
+        .auth-footer { text-align: center; margin-top: 20px; }
+        .auth-footer a { color: #ff5500; text-decoration: none; }
+        .error-message { color: #dc3545; margin-bottom: 15px; text-align: center; }
+        .success-message { color: #28a745; margin-bottom: 15px; text-align: center; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="auth-container">
+        <div class="logo">FIT<span>FORCE</span></div>
+
+        <!-- Messages d'erreur/succès -->
+        <div th:if="${error}" class="error-message" th:text="${error}"></div>
+        <div th:if="${success}" class="success-message" th:text="${success}"></div>
+
+        <!-- Formulaire aligné avec l'entité Utilisateur -->
+        <form th:action="@{/register}" method="post" th:object="${utilisateur}">
+            <div class="row">
+                <div class="col-md-6">
+                    <input type="text" class="form-control" th:field="*{prenom}" placeholder="Prénom" required>
+                </div>
+                <div class="col-md-6">
+                    <input type="text" class="form-control" th:field="*{nom}" placeholder="Nom" required>
+                </div>
+            </div>
+
+            <!-- Champ email -->
+            <input type="email" class="form-control" th:field="*{email}" placeholder="Email" required>
+
+            <!-- Champ username (doit correspondre à l'entité) -->
+            <input type="text" class="form-control" th:field="*{username}" placeholder="Nom d'utilisateur" required>
+
+            <!-- Champ password (nom dans l'entité : password) -->
+            <input type="password" class="form-control" th:field="*{password}" placeholder="Mot de passe" required>
+
+
+            <button type="submit" class="btn btn-register">S'inscrire</button>
+        </form>
+
+        <div class="auth-footer">
+            Déjà membre ? <a th:href="@{/login}">Se connecter</a>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
