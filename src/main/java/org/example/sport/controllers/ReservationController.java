@@ -34,10 +34,12 @@ public class ReservationController {
                                      BindingResult bindingResult,
                                      RedirectAttributes redirectAttributes) {
 
+        // Si des erreurs de validation existent
         if (bindingResult.hasErrors()) {
             return "reservation"; // reste sur la page si erreurs
         }
 
+        // Sauvegarde de la réservation
         Reservation savedReservation = reservationService.saveReservation(reservation);
 
         // Ajoute les attributs pour la redirection
@@ -53,6 +55,12 @@ public class ReservationController {
         if (!model.containsAttribute("reservation")) {
             return "redirect:/reservation"; // redirige si accès direct
         }
+
+        // Vous pouvez également ajouter des messages de succès ici
+        if (model.containsAttribute("success")) {
+            model.addAttribute("message", "Réservation confirmée avec succès !");
+        }
+
         return "confirmation"; // correspond à confirmation.html
     }
 }

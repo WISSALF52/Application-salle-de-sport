@@ -17,7 +17,6 @@ public class ServiceReservation {
         this.reservationRepository = reservationRepository;
     }
 
-
     // Créer une nouvelle réservation
     public Reservation creerReservation(Reservation reservation) {
         return reservationRepository.save(reservation);
@@ -43,18 +42,24 @@ public class ServiceReservation {
         Optional<Reservation> optionalReservation = reservationRepository.findById(id);
         if (optionalReservation.isPresent()) {
             Reservation reservation = optionalReservation.get();
-
+            // Vous pouvez ajouter une logique de confirmation ici si nécessaire
             return reservationRepository.save(reservation);
         }
         throw new RuntimeException("Réservation non trouvée avec l'id : " + id);
     }
 
-
+    // Retourner une réservation par ID
     public Reservation getReservationById(Long id) {
-    return null;}
-    public Reservation saveReservation(Reservation reservation) {
+        Optional<Reservation> reservation = reservationRepository.findById(id);
+        if (reservation.isPresent()) {
+            return reservation.get();
+        } else {
+            throw new RuntimeException("Réservation non trouvée avec l'id : " + id);
+        }
+    }
 
-        reservationRepository.save(reservation);
-        return reservation;
+    // Sauvegarder une réservation
+    public Reservation saveReservation(Reservation reservation) {
+        return reservationRepository.save(reservation);
     }
 }

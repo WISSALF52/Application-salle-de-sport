@@ -4,15 +4,15 @@ import jakarta.persistence.*;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "reservation")
+@Table(name = "reservationss")
 public class Reservation {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id; // <-- Clé primaire
 
-    private String nomComplet;
-    private String email;
+    private String NomComplet;
+    private String Email;
     private String telephone;
     private LocalDate dateReservation;
     private String methodePaiement;
@@ -35,10 +35,10 @@ public class Reservation {
     public Reservation() {
     }
 
-    public Reservation(String nomComplet, String email, String telephone, LocalDate dateReservation,
+    public Reservation(String NomComplet, String Email, String telephone, LocalDate dateReservation,
                        String methodePaiement, String message, boolean conditionsAcceptees) {
-        this.nomComplet = nomComplet;
-        this.email = email;
+        this.NomComplet = NomComplet;
+        this.Email = Email;
         this.telephone = telephone;
         this.dateReservation = dateReservation;
         this.methodePaiement = methodePaiement;
@@ -52,19 +52,19 @@ public class Reservation {
     }
 
     public String getNomComplet() {
-        return nomComplet;
+        return NomComplet;
     }
 
-    public void setNomComplet(String nomComplet) {
-        this.nomComplet = nomComplet;
+    public void setNomComplet(String NomComplet) {
+        this.NomComplet = NomComplet;
     }
 
     public String getEmail() {
-        return email;
+        return Email;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setEmail(String Email) {
+        this.Email = Email;
     }
 
     public String getTelephone() {
@@ -135,8 +135,8 @@ public class Reservation {
     public String toString() {
         return "Reservation{" +
                 "id=" + id +
-                ", nomComplet='" + nomComplet + '\'' +
-                ", email='" + email + '\'' +
+                ", nomComplet='" + NomComplet + '\'' +
+                ", email='" + Email + '\'' +
                 ", telephone='" + telephone + '\'' +
                 ", dateReservation=" + dateReservation +
                 ", methodePaiement='" + methodePaiement + '\'' +
