@@ -61,6 +61,3 @@ Les contributions sont les bienvenues ! Pour contribuer :
 
 Ce projet est sous licence MIT - voir le fichier [LICENSE](LICENSE) pour plus de détails.
 
-## Contact
-
-Si vous avez des questions ou des suggestions, n'hésitez pas à nous contacter à [votre-email@example.com](mailto:votre-email@example.com).
