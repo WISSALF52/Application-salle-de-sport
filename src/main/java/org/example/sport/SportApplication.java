@@ -21,14 +21,6 @@ public class SportApplication {
     public CommandLineRunner initData(UtilisateurRepository utilisateurRepository, PasswordEncoder passwordEncoder) {
         return args -> {
             if (utilisateurRepository.count() == 0) {
-                // Création de l'admin
-                Utilisateur admin = new Utilisateur();
-                admin.setNom("Admin");
-                admin.setPrenom("System");
-                admin.setUsername("admin"); // Ajout du username
-                admin.setEmail("admin@sport.com");
-                admin.setPassword(passwordEncoder.encode("admin123"));
-                admin.setRoles(Set.of(Utilisateur.Role.ADMIN, Utilisateur.Role.CLIENT));
 
                 // Création du client
                 Utilisateur client = new Utilisateur();
@@ -49,7 +41,7 @@ public class SportApplication {
                 client2.setRoles(Set.of(Utilisateur.Role.CLIENT));
 
                 // Sauvegarde des utilisateurs
-                utilisateurRepository.save(admin);
+
                 utilisateurRepository.save(client);
                 utilisateurRepository.save(client2);
 
