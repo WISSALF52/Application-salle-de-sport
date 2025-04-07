@@ -38,19 +38,19 @@ Ce projet est une application web complète de gestion de salle de sport, conçu
     *   **Java:** Langage de programmation principal pour la logique applicative.
     *   **Spring Boot:** Framework pour le développement rapide d'applications Java robustes.
     *   **Maven:** Outil de gestion de dépendances et de construction du projet.
-    *   **Database:**  *À spécifier (ex: MySQL, PostgreSQL)* -  Pour le stockage des données (membres, cours, etc.).
+    *   **Database:**  *À spécifier (ex: MySQL,)* -  Pour le stockage des données (membres, cours, etc.).
 *   **Frontend:**
     *   **HTML:** Structure du contenu de l'application.
     *   **CSS:** Mise en forme et design de l'application.
     *   **JavaScript (Optional):**  Pour interactivité et dynamisme de l'interface utilisateur. Frameworks comme React, Angular ou Vue.js peuvent être utilisés.
 *   **DevOps:**
-    *   **Teamlyf (Optional):**  Outil de collaboration en équipe et de gestion des tâches (remplacez si un autre outil est utilisé).
+    *   **Teamlyf ():**.
     *   **Docker:** Conteneurisation de l'application pour un déploiement facile et reproductible.
     *   **Jenkins:** Intégration continue et déploiement continu (CI/CD) pour automatiser le processus de build, test et déploiement.
 
 ## Prérequis
 
-*   Java Development Kit (JDK) 8 ou supérieur.
+*   Java Development Kit (JDK) 21 ou supérieur.
 *   Maven.
 *   Docker (si vous souhaitez utiliser la conteneurisation).
 *   Un IDE (Integrated Development Environment) comme IntelliJ IDEA ou Eclipse.
@@ -61,7 +61,7 @@ Ce projet est une application web complète de gestion de salle de sport, conçu
 1.  **Clonez le dépôt :**
 
     ```bash
-    git clone https://github.com/errachidy10/Application-salle-de-sport-main1.git
+    git clone https://github.com/errachidy10/Application-salle-de-sport-main1.git](https://github.com/WISSALF52/Application-salle-de-sport.git
     ```
 
 2.  **Naviguez dans le répertoire du projet :**
